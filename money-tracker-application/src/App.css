@@ -1,42 +1,73 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  color: white;
+  background-color: #1F2833;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+  display: flex;
+  margin-bottom: 1rem;
+    font-size: 16px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+form input {
+  background-color: transparent;
+  color: #ccccccee;
+  padding: 2px 5px;
+  border: 2px solid #30313d;
+  border-radius: 5px;
 }
 
-.card {
-  padding: 2em;
+form label {
+  font-size: 16px;
 }
 
-.read-the-docs {
-  color: #888;
+form input, label {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
+
+form button {
+  width: 100%;
+}
+
+.basicInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 5px;
+}
+
+.description {
+  margin-bottom: 5px;
+}
+
+.transactions {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  border-top: 2px solid #30313d;
+}
+
+.transactions .name {
+  font-size: 18px;
+  color: white;
+}
+
+.transactions .description {
+  color: gray;
+}
+
+.right {
+  text-align: right;
+}
+
