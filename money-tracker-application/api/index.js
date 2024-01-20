@@ -30,4 +30,15 @@ app.post('/api/transaction', async (req,res) => {
 
 });
 
+app.delete('/api/deleteTransactions/:id', async (req,res) => {
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        const transactionID = req.params.id;
+        await transaction.findByIdAndDelete(transactionID);
+        res.json({success: true, message: `Transaction with ID ${transactionID} successfully removed.`})
+    }
+    catch (error) {
+        console.error('Error', error);
+    }
+})
 

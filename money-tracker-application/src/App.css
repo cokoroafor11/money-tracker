@@ -89,3 +89,8 @@ form button {
   text-align: right;
 }
 
+svg.delete {
+  background-color: #8a8f98;
+  border-radius: 5px;
+  cursor: pointer;
+}

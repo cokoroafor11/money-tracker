@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Icon from '@mdi/react';
+import { mdiTrashCanOutline } from '@mdi/js';
+
 
 function App() {
   const [name,setName] = useState('');
@@ -43,6 +46,12 @@ function App() {
       price: parseFloat(transaction.price)
     }));
     return parsedTransactions;
+  }
+
+  async function deleteTransactions() {
+    const url = import.meta.env.VITE_API_URL+'/deleteTransactions/:id';
+    await fetch(url, {method: POST});
+    
   }
   
   const totalBalance = () => {
@@ -95,14 +104,15 @@ function App() {
         
         return (
           <div className="transactions" key={transaction._id}>
-          <div className="left">
-            <div className="name">{transaction.name}</div>
-            <div className="description">{transaction.desc}</div>
-          </div>
-          <div className="right">
-            <div className="price"><span style={{ color: transaction.price >= 0 ? 'lightgreen' : 'red' }}>${transaction.price}</span></div>
-            <div className="datetime">{formattedDate}</div>
-          </div>
+            <div className="left">
+              <div className="name">{transaction.name}</div>
+              <div className="description">{transaction.desc}</div>
+            </div>
+            <div className="right">
+                <div className="price"><span style={{ color: transaction.price >= 0 ? 'lightgreen' : 'red' }}>${transaction.price}</span></div>
+                <div className="datetime">{formattedDate}</div>
+                <Icon className="delete" path={mdiTrashCanOutline} size={0.7} />
+            </div>
           </div>
         );
       })}
