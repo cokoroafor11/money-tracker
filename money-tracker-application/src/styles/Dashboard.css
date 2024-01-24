@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+.recent-transaction {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3948;
+    border: 2px solid #bad1db;
+    box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);; 
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    
+}
+
+.range-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.range-titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.income-range {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3948;
+    border: 2px solid #bad1db;
+    box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);; 
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    color: lightgreen;
+    
+}
+
+.expense-range {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3948;
+    border: 2px solid #bad1db;
+    box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);; 
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    color: red;
+}

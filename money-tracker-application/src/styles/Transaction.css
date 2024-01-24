@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: white;
+    background-color: #1F2833;
+  
+  }
+  
+  
+  .headers {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    align-items: flex-end;
+  }
+  
+  .headers h1 {
+    margin: 0;
+  }
+  
+  .headers .info h3,
+  .headers .info p {
+    margin: 0 auto;
+  }
+  
+  form {
+    display: flex;
+    margin-bottom: 1rem;
+    font-size: 16px;
+  
+  }
+  
+  form input {
+    background-color: transparent;
+    color: #ccccccee;
+    padding: 2px 5px;
+    border: 2px solid #30313d;
+    border-radius: 5px;
+  }
+  
+  form label {
+    font-size: 16px;
+  }
+  
+  form input, label {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  form button {
+    width: 100%;
+  }
+  
+  .basicInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 5px;
+  }
+  
+  .description {
+    margin-bottom: 5px;
+  }
+  
+  .transactions {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: space-between;
+    border-top: 2px solid #30313d;
+  }
+  
+  .transactions .name {
+    font-size: 18px;
+    color: white;
+  }
+  
+  .transactions .description {
+    color: gray;
+  }
+  
+  .right {
+    text-align: right;
+  }
+  
+  svg.edit-delete {
+    background-color: #8a8f98;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.1rem;
+  }

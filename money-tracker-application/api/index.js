@@ -37,8 +37,9 @@ app.delete('/api/deleteTransactions/:id', async (req,res) => {
         await transaction.findByIdAndDelete(transactionID);
         res.json({success: true, message: `Transaction with ID ${transactionID} successfully removed.`})
     }
-    catch (error) {
-        console.error('Error', error);
+    catch(error) {
+        console.error("Error Deleting Transaction:",error);
     }
+    
 })
 
