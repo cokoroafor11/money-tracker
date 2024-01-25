@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import '../styles/Dashboard.css';
+import BarPlot from './BarChart';
 
 function Dashboard() {
     const [transactions, setTransactions] = useState([])
@@ -52,10 +53,10 @@ function Dashboard() {
     const [totalExpense,minExpense,maxExpense] = expense();
 
     return (
-        <div>
+        <div className = "dash">
             <div className="chart">
                 <h1>Expense Chart</h1>
-                <p>Hello</p>
+                <BarPlot/>
             </div>
 
             <div className="other-info">
@@ -76,7 +77,7 @@ function Dashboard() {
                 <div className="range-group">
                     <div className="range-titles">
                         <p>Min</p>
-                        <h2>Income</h2>
+                        <h3>Income</h3>
                         <p>Max</p>
                     </div>
                     <div className="income-range">
@@ -88,7 +89,7 @@ function Dashboard() {
                 <div className="range-group">
                     <div className="range-titles">
                         <p>Min</p>
-                        <h2>Expense</h2>
+                        <h3>Expense</h3>
                         <p>Max</p>
                     </div>
                     <div className="expense-range">

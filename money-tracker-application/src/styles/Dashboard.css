@@ -1,8 +1,22 @@
-body {
+.dash {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.chart {
     display: flex;
     flex-direction: column;
-    width: 100%
+    align-items: center;
+    margin: 1rem;
 }
+
+.other-info {
+    margin: 1rem;
+    padding: 1rem;
+}
+
 .recent-transaction {
     display: flex;
     flex-direction: row;

@@ -4,12 +4,16 @@
     "@emotion/styled": "^11.11.0",
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
+    "@mui/material": "^5.15.6",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.13",
     "@mui/x-charts": "^6.19.1",
     "chart.js": "^4.4.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
-    "react-chartjs-2": "^5.2.0"
+    "react-chartjs-2": "^5.2.0",
+    "recharts": "^2.10.4",
+    "styled-components": "^6.1.8"
   }
 }
