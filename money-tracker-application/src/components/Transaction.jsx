@@ -65,65 +65,74 @@ function Transaction() {
     transactions.forEach(num => {
       sum+=num.price;
     });
-    return sum;
+    return (Math.round(sum * 100) / 100).toFixed(2);;
   }
   
   return (
-    <div>
-      <div className = 'headers'>
-        <h1>Balance</h1>
-        <div className="info">
-          <h3>Current Balance: <span style={{ color: totalBalance() >= 0 ? 'lightgreen' : 'red' }}>${totalBalance()}</span></h3>
-          <p>Total Transactions: {transactions.length}</p>
-        </div>
-      <div className="searchBar">
-      </div>
-      </div>
-      <form onSubmit = {addNewTransaction}>
-        <div>
-          <div className='basicInfo'>
-            <div className="grid-left">
-              <label>Transaction</label>
-              <input type = "text" id = "name" value = {name} onChange={e =>setName(e.target.value)} placeholder = "New Apple Watch"/>
+    <div className="transact-body">
+        
+            <div className="left-body">
+                <div className = 'headers'>
+                    <h1>Balance</h1>
+                    <div className="info">
+                        <h3>Current Balance: <span style={{ color: totalBalance() >= 0 ? 'lightgreen' : 'red' }}>${totalBalance()}</span></h3>
+                        <p>Total Transactions: {transactions.length}</p>
+                    </div>
+                    <div className="searchBar">
+                    </div>
+                </div>
+                <form onSubmit = {addNewTransaction}>
+                    <div>
+                    <div className='basicInfo'>
+                        <div className="grid-left">
+                        <label>Transaction</label>
+                        <input type = "text" id = "name" value = {name} onChange={e =>setName(e.target.value)} placeholder = "New Apple Watch"/>
+                        </div>
+                        <div className="grid-right">
+                        <label>Date</label>
+                        <input type = "date" id = "date" value={date} onChange={e => setDate(e.target.value)}/>
+                        </div>
+
+                    </div>
+                    <div className='description'>
+                        <label>Description</label>
+                        <input type = "Description" id="description" value={desc} onChange={e=> setDesc(e.target.value)} placeholder = "My last watch broke"/>
+                        <label>Price</label>
+                        <input type = "number" id = "price" value={price} onChange={e=> setPrice(e.target.value)} placeholder="$121.76" step="any"/>
+                    </div>
+                    <button type = "submit">Add Transaction</button>
+                    </div>
+                </form>
             </div>
-            <div className="grid-right">
-              <label>Date</label>
-              <input type = "date" id = "date" value={date} onChange={e => setDate(e.target.value)}/>
+            <div className="right-body">
+                <h2>Transactions</h2>
+                {transactions.map((transaction) => {
+                    const formattedDate = new Date(transaction.date).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    });
+                    
+                    return (
+                    <div className="transactions" key={transaction._id}>
+                        <div className="left">
+                            <div className="name">{transaction.name}</div>
+                            <div className="description">{transaction.desc}</div>
+                        </div>
+                        <div className="right">
+                            <div className="price"><span style={{ color: transaction.price >= 0 ? 'lightgreen' : 'red' }}>${transaction.price}</span></div>
+                            <div className="datetime">{formattedDate}</div>
+                            <Icon className="edit-delete" path={mdiTrashCanOutline} size={0.7} onClick = {() => deleteTransactions(transaction._id)} />
+                            <Icon className="edit-delete"path={mdiNoteEditOutline} size={0.7} />
+                        </div>
+                    </div>
+                    );
+                })}
             </div>
 
-          </div>
-          <div className='description'>
-            <label>Description</label>
-            <input type = "Description" id="description" value={desc} onChange={e=> setDesc(e.target.value)} placeholder = "My last watch broke"/>
-            <label>Price</label>
-            <input type = "number" id = "price" value={price} onChange={e=> setPrice(e.target.value)} placeholder="$121.76" step="any"/>
-          </div>
-          <button type = "submit">Add Transaction</button>
-        </div>
-      </form>
-      {transactions.map((transaction) => {
-        const formattedDate = new Date(transaction.date).toLocaleString('en-US', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
-          });
-        
-        return (
-          <div className="transactions" key={transaction._id}>
-            <div className="left">
-              <div className="name">{transaction.name}</div>
-              <div className="description">{transaction.desc}</div>
-            </div>
-            <div className="right">
-                <div className="price"><span style={{ color: transaction.price >= 0 ? 'lightgreen' : 'red' }}>${transaction.price}</span></div>
-                <div className="datetime">{formattedDate}</div>
-                <Icon className="edit-delete" path={mdiTrashCanOutline} size={0.7} onClick = {() => deleteTransactions(transaction._id)} />
-                <Icon className="edit-delete"path={mdiNoteEditOutline} size={0.7} />
-            </div>
-          </div>
-        );
-      })}
-  </div>
+    
+
+    </div>
   )
 }
 

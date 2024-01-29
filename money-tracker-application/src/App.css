@@ -1,0 +1,68 @@
+body {
+  /* display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: row; */
+  color: white;
+  background-color: #1F2833;
+  }
+
+  
+
+.app-main {
+  margin: 4rem;
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+  background-color: rgb(28, 31, 42);
+  border-bottom: 1px solid #385663;
+  box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);
+  min-width: 100vw;
+}
+
+.navbar .nav-menu ul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  flex-wrap: nowrap;
+}
+
+/*lining up navbar elements*/
+.navbar .nav-menu ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+} 
+
+/* remove hyperlink and add transition when hovering */
+.navbar .nav-menu ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  border-bottom: 2px solid transparent;
+  transition: 0.4s;
+}
+/* navbar transition out when hovering is done*/
+.navbar .nav-menu ul li a:hover{
+  background-color:#476e7f;
+  border-radius: 2px;
+  padding: 10px 10px;
+  transition: 0.4s;
+}
+
+.app-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 75vw;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
