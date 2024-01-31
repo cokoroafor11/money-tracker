@@ -1,31 +1,25 @@
 import Icon from '@mdi/react';
 import { mdiViewDashboardOutline, mdiCashFast , mdiAccountOutline } from '@mdi/js';
-
+import '../styles/NavBar.css'
+import {NavLink} from 'react-router-dom';
 
 function NavBar() {
     return (
-        <div className="nav-bar">
-            <div className="button-group">
-                <div className="pic">
-                    <Icon path={mdiAccountOutline} size={1} />
-                </div>
-                <div className="prof-info">
-                    <h3>Name</h3>
-                </div>
+        <div className="navbar">
+            <div className="profile">
+                <Icon path={mdiAccountOutline} size={1} />Welcome, name.
             </div>
-            <div className="button-group">
-                <Icon path={mdiViewDashboardOutline} size={1} />
-                <h3>Dashboard</h3>
+            <div className="nav-menu">
+                <ul id>
+                    <li><NavLink to="/dashboard">
+                    <Icon path={mdiViewDashboardOutline} size={1} />Dashboard
+                    </NavLink></li>
+                    <li><NavLink to="/transaction">
+                    <Icon path={mdiCashFast} size={1} />Transactions
+                    </NavLink></li>
+                </ul>
             </div>
-            <div className="button-group">
-                <Icon path={mdiCashFast } size={1} />
-                <h3>Balance Items</h3>
-            </div>
-            <div className="button-group">
-                <Icon path={mdiCashFast } size={1} />
-                <h3>Ad</h3>
-            </div>
-        </div>
+      </div>
     )
 }
 

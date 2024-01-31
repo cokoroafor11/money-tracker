@@ -13,7 +13,13 @@
     margin-left: 2rem;
     margin-right: 2rem;
     }
-  
+
+.left-body {
+    padding: 1rem;
+}    
+.right-body {
+    padding: 1rem;
+}
 .headers {
     display: flex;
     justify-content: space-between;
@@ -24,11 +30,13 @@
   
 .headers h1 {
     margin: 0;
+    padding-right: 0.2rem;
     }
   
 .headers .info h3,
 .headers .info p {
     margin: 0 auto;
+    padding-left: 0.3rem;
     }
   
 form {

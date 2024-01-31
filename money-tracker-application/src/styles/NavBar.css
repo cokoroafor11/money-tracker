@@ -1,21 +1,45 @@
-.nav-bar {
+.navbar {
     display: flex;
-    flex-direction: row;
+    height: 5rem;
     justify-content: space-between;
     align-items: center;
-    background: #2c3948;
-    border: 2px solid #bad1db;
-    box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);; 
-    padding: 15px;
-    border-radius: 20px;
-    margin-bottom: 2rem;
-    left: 0;
+    padding: 1rem;
+    flex-wrap: wrap;
+    background-color: rgb(28, 31, 42);
+    border-bottom: 1px solid #385663;
+    box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);
+    min-width: 100vw;
+    z-index: 1000;
     
-}
-
-.button-group {
+  }
+  
+  .navbar .nav-menu ul {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    cursor: pointer;
-}
+    padding: 0;
+    margin: 0;
+    flex-wrap: nowrap;
+  }
+  
+  /*lining up navbar elements*/
+  .navbar .nav-menu ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+  } 
+  
+  /* remove hyperlink and add transition when hovering */
+  .navbar .nav-menu ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    border-bottom: 2px solid transparent;
+    transition: 0.4s;
+  }
+  /* navbar transition out when hovering is done*/
+  .navbar .nav-menu ul li a:hover{
+    background-color:#476e7f;
+    border-radius: 2px;
+    padding: 10px 10px;
+    transition: 0.4s;
+  }

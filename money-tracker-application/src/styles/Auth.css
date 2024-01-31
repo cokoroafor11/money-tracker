@@ -1,0 +1,46 @@
+.auth-body {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 1rem;
+    background: #19202b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    padding: 15px;
+    margin-bottom: 2rem;
+    height: 40vh;
+    width: 35vw;
+    border-radius: 10px;
+    animation: fadeIn 2s;
+        
+    
+
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+form {
+    display: flex;
+    font-size: 16px;
+    flex-direction: column;
+    }
+  
+.form-section input {
+    margin-bottom: 0.7rem;
+    font-size: 16px;
+
+}
+form input::placeholder {
+    color: rgb(175, 175, 175); 
+    
+  }
+form button {
+    background-color: #646cff;
+    color: white;
+}
+a {
+    text-decoration: none;
+}

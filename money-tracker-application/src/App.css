@@ -1,17 +1,18 @@
-body {
-  /* display: flex;
-  align-items: center;
-  height: 100vh;
-  flex-direction: row; */
-  color: white;
-  background-color: #1F2833;
-  }
-
-  
 
 .app-main {
-  margin: 4rem;
+  display: flex;
+  align-items: center;
   margin: 0 auto;
+
+
+}
+
+.app-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 75vw;
+  padding-top: 1rem;
 }
 
 .navbar {
@@ -25,6 +26,8 @@ body {
   border-bottom: 1px solid #385663;
   box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);
   min-width: 100vw;
+  z-index: 1000;
+  
 }
 
 .navbar .nav-menu ul {
@@ -58,11 +61,3 @@ body {
   transition: 0.4s;
 }
 
-.app-body {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 75vw;
-  margin: 0 auto;
-  padding-top: 1rem;
-}

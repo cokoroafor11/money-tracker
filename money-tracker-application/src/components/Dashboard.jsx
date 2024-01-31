@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/Dashboard.css';
 import BarPlot from './BarChart';
+import NavBar from './NavBar';
 
 function Dashboard() {
     const [transactions, setTransactions] = useState([])
