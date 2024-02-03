@@ -9,7 +9,10 @@ function Transaction() {
   const [date,setDate] = useState('');
   const [desc,setDesc] = useState('');
   const [price,setPrice] = useState('');
-  const [transactions,setTransactions] = useState([])
+  const [type,setType] = useState('');
+  const [category,setCategory] = useState('');
+  const [transactions,setTransactions] = useState([]);
+  const [buttonFlag, setButtonFlag] = useState('Income');
 
   async function addNewTransaction(e) {
     e.preventDefault();
@@ -65,7 +68,7 @@ function Transaction() {
     transactions.forEach(num => {
       sum+=num.price;
     });
-    return (Math.round(sum * 100) / 100).toFixed(2);;
+    return (Math.round(sum * 100) / 100).toFixed(2);
   }
   
   return (
@@ -100,13 +103,17 @@ function Transaction() {
                         <label>Price</label>
                         <input type = "number" id = "price" value={price} onChange={e=> setPrice(e.target.value)} placeholder="$121.76" step="any"/>
                     </div>
-                    <button type = "submit">Add Transaction</button>
+                    <div className="buttons">
+                        
+                        <button type = "submit">Add Transaction</button>
+                    </div>
+
                     </div>
                 </form>
             </div>
             <div className="right-body">
-                <h2>Transactions</h2>
-                {transactions.map((transaction) => {
+                <h2>Recent Transactions</h2>
+                {transactions.slice(0,5).map((transaction) => {
                     const formattedDate = new Date(transaction.date).toLocaleString('en-US', {
                         year: 'numeric',
                         month: '2-digit',

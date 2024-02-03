@@ -47,7 +47,7 @@ function BarPlot() {
                 
             }
             else {
-                monthObj[key].Expense += Math.round((transaction.price + Number.EPSILON) * 100) / 100;
+                monthObj[key].Expense += Math.abs(Math.round((transaction.price + Number.EPSILON) * 100) / 100);
             }
             return monthObj;
         }, {});

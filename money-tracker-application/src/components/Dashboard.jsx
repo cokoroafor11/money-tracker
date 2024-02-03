@@ -1,13 +1,22 @@
 import { useState, useEffect } from 'react'
 import '../styles/Dashboard.css';
 import BarPlot from './BarChart';
-import NavBar from './NavBar';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../firebase';
+import ReactPaginate from 'react-paginate';
+
 
 function Dashboard() {
+    //Hook for transactions array
     const [transactions, setTransactions] = useState([])
+    const [currentPage, setCurrentPage] = useState(0);
+    const perPage = 5;
+    const startInd = currentPage*perPage;
+    const endInd = startInd + perPage;
 
-    async function getTransactions() {
-        const url = import.meta.env.VITE_API_URL+'/getTransactions';
+    //Loader function for transactions
+    async function getTransactions(page) {
+        const url = import.meta.env.VITE_API_URL+`/getTransactions?page=${page}`;
         const response = await fetch(url);
         const data = await response.json();
         const parsedTransactions =  data.map(transaction => ({
@@ -18,9 +27,26 @@ function Dashboard() {
       }
     //trigger the fetching of data when component is mounted
     useEffect(() => {
-        getTransactions().then(setTransactions)
-      }, [])
+        getTransactions(currentPage).then(setTransactions)
+      }, [currentPage])
 
+    function pageChange(clickedPage) {
+        setCurrentPage(clickedPage.selected);
+    }
+
+    //trigger the auth state - check if user is signed in or out
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const userUID = user.uid;
+                console.log("uid", uid);
+            } else {
+                console.log("User is logged out.")
+            }
+        })
+    })
+
+    //Get total balance
     function getBalance(transactions) {
         let sum = 0;
         transactions.forEach(num => {
@@ -29,6 +55,7 @@ function Dashboard() {
         return sum;
       }
 
+    //Get income balances
     const income = () => {
         let incomes = transactions.filter((transaction) => transaction.price>=0);
 
@@ -39,8 +66,10 @@ function Dashboard() {
         return [totalInc,minInc,maxInc];
     }
     
+    
     const [totalIncome,minIncome,maxIncome] = income();
 
+    //Get expense balances
     const expense = () => {
         let expenses = transactions.filter((transaction) => transaction.price<0);
         expenses = expenses.map((expense)=>{return (expense.price)});
@@ -53,7 +82,9 @@ function Dashboard() {
 
     const [totalExpense,minExpense,maxExpense] = expense();
 
+
     return (
+        <div className="dash-body">
         <div className = "dash">
             <div className="chart">
                 <h1>Expense Chart</h1>
@@ -74,31 +105,44 @@ function Dashboard() {
                     })}
                     
                 </div>
-                
-                <div className="range-group">
-                    <div className="range-titles">
-                        <p>Min</p>
-                        <h3>Income</h3>
-                        <p>Max</p>
-                    </div>
-                    <div className="income-range">
-                        <p>${minIncome}</p>
-                        <p>${maxIncome}</p>
-                    </div>
-                </div>
-
-                <div className="range-group">
-                    <div className="range-titles">
-                        <p>Min</p>
-                        <h3>Expense</h3>
-                        <p>Max</p>
-                    </div>
-                    <div className="expense-range">
-                        <p>${minExpense}</p>
-                        <p>${maxExpense}</p>
-                    </div>
-                </div>
             </div>
+        </div>
+        <div className="table">
+            <h2>Expenses</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transaction</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {transactions.slice(startInd,endInd).map((transaction) => {
+                        const newDate = new Date(transaction.date);
+                        const formattedDate = newDate.toLocaleDateString();
+                        return (
+                        <tr key = {transaction._id}>
+                            <td>{transaction.name}</td>
+                            <td>{transaction.price}</td>
+                            <td>{formattedDate}</td>
+                        </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            <ReactPaginate
+                pageCount={Math.ceil(transactions.length / perPage)}
+                pageRangeDisplayed={5}
+                marginPagesDisplayed={2}
+                onPageChange={pageChange}
+                previousLabel="<Prev"
+                nextLabel="Next>"
+                containerClassName={'pagination'}
+                activeClassName={'active'}
+            />
+        </div>
 
         </div>
     )

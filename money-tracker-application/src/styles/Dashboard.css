@@ -1,3 +1,13 @@
+* {
+    box-sizing: border-box;
+    }
+  
+.dash-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
 .dash {
     display: flex;
     flex-direction: row;
@@ -12,10 +22,43 @@
     margin: 1rem;
 }
 
+.table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+table {
+    text-align: center;
+    width: 100%;
+    background: #2c3948;
+    box-shadow: 0 8px 16px rgba(231, 231, 231, 0.2);; 
+    padding: 15px;
+
+}
+
+thead th{
+    padding-bottom: 0.5em;
+}
+
+tbody tr {
+    background-color: #273442;
+    color: #ffff;
+  }
+
+tbody td {
+    padding-bottom: 0.5rem;
+}
+tbody tr:nth-child(even) td {
+    background-color: #2a4358;
+  }
+
 .other-info {
     margin: 1rem;
     padding: 1rem;
-    width: 30vw;
+    width: 22rem;
 }
 
 .recent-transaction {
@@ -75,4 +118,36 @@
     border-radius: 20px;
     margin-bottom: 2rem;
     color: red;
+}
+
+.pagination {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    color: white;
+}
+
+.pagination a {
+    display: inline-block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: 0.5px solid gray;
+    background: rgb(255, 255, 255);
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.pagination a:hover {
+    background-color: #eee;
+}
+
+.pagination .active a {
+    background-color: #3f556e;
+    color: #ffffff;
+    cursor: default;
 }
