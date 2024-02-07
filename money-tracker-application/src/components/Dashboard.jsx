@@ -39,7 +39,7 @@ function Dashboard() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 const userUID = user.uid;
-                console.log("uid", uid);
+                console.log("uid", userUID);
             } else {
                 console.log("User is logged out.")
             }
@@ -127,6 +127,7 @@ function Dashboard() {
                             <td>{transaction.name}</td>
                             <td>{transaction.price}</td>
                             <td>{formattedDate}</td>
+                            <td>{transaction.budgetType}</td>
                         </tr>
                         )
                     })}

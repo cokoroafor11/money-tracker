@@ -1,5 +1,5 @@
 import Icon from '@mdi/react';
-import { mdiViewDashboardOutline, mdiCashFast , mdiAccountOutline } from '@mdi/js';
+import { mdiViewDashboardOutline, mdiCashFast , mdiAccountOutline, mdiCalculatorVariantOutline } from '@mdi/js';
 import '../styles/NavBar.css'
 import {NavLink} from 'react-router-dom';
 
@@ -13,6 +13,9 @@ function NavBar() {
                 <ul id>
                     <li><NavLink to="/dashboard">
                     <Icon path={mdiViewDashboardOutline} size={1} />Dashboard
+                    </NavLink></li>
+                    <li><NavLink to="/budget">
+                    <Icon path={mdiCalculatorVariantOutline} size={1} />Budgets
                     </NavLink></li>
                     <li><NavLink to="/transaction">
                     <Icon path={mdiCashFast} size={1} />Transactions

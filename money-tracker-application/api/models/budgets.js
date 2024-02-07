@@ -1,10 +1,10 @@
 import {Schema, model} from "mongoose";
 const budgetSchema = new Schema({
     budgetName: {type: String, required: true},
-    budgetMax: {type: Number, required: true}
+    budgetGoal: {type: Number, required: true}
 
 });
 
-const transactionModel = model('Transaction', transactionSchema) 
+const budgetModel = model('Budget', budgetSchema) 
 
-export default transactionModel;
+export default budgetModel;

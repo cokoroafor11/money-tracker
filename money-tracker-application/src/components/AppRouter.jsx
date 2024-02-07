@@ -4,6 +4,7 @@ import Transaction from "./Transaction";
 import Login from './Login';
 import SignUp from "./SignUp";
 import Home from "./Home";
+import Budget from "./Budget";
 
 function AppRouter() {
     //Routes (dashboard and transaction protected )
@@ -15,6 +16,7 @@ function AppRouter() {
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/transaction" element={<Transaction/>}/>
+                <Route path="/budget" element={<Budget/>}/>
             </Routes>
     )
 }
