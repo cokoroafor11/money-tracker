@@ -6,7 +6,7 @@ import { auth } from '../firebase';
 import ReactPaginate from 'react-paginate';
 
 
-function Dashboard() {
+function Dashboard({userUID}) {
     //Hook for transactions array
     const [transactions, setTransactions] = useState([])
     const [currentPage, setCurrentPage] = useState(0);
@@ -14,7 +14,11 @@ function Dashboard() {
     const startInd = currentPage*perPage;
     const endInd = startInd + perPage;
 
-    //Loader function for transactions
+    /**
+     * Make a GET request to backend for transaction data
+     * @returns {<Array<Object>>} An array of fetched transaction 
+     * objects with properties such as name,date,price,desc. 
+     */
     async function getTransactions(page) {
         const url = import.meta.env.VITE_API_URL+`/getTransactions?page=${page}`;
         const response = await fetch(url);
@@ -25,26 +29,16 @@ function Dashboard() {
         }));
         return parsedTransactions;
       }
+      
     //trigger the fetching of data when component is mounted
     useEffect(() => {
         getTransactions(currentPage).then(setTransactions)
       }, [currentPage])
-
+    
+    //sets page for transaction pagination
     function pageChange(clickedPage) {
         setCurrentPage(clickedPage.selected);
     }
-
-    //trigger the auth state - check if user is signed in or out
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const userUID = user.uid;
-                console.log("uid", userUID);
-            } else {
-                console.log("User is logged out.")
-            }
-        })
-    })
 
     //Get total balance
     function getBalance(transactions) {

@@ -11,9 +11,18 @@ import {
 
 import '../styles/BarChart.css';
 
+/**
+ * Bar Chart visualization for transactions
+ * @returns {JSX.Element}   A component for a bar chart display
+ */
 function BarPlot() {
     const [transactions, setTransactions] = useState([])
 
+    /**
+     * Make a GET request to backend for transaction data
+     * @returns {<Array<Object>>} An array of fetched transaction 
+     * objects with properties such as name,date,price,desc. 
+     */
     async function getTransactions() {
         const url = import.meta.env.VITE_API_URL+'/getTransactions';
         const response = await fetch(url);
@@ -24,17 +33,25 @@ function BarPlot() {
         }));
         return parsedTransactions;
       }
+
     //trigger the fetching of data when component is mounted
     useEffect(() => {
         getTransactions().then(setTransactions)
       }, [])
     
+
+    /**
+     * Groups transactions into amount per month
+     * @returns {<Array<Object>>} An array of these new objects containing the 
+     * month, income and expense for that given month
+     */
     function groupTransactions() {
         const monthGroups = transactions.reduce((monthObj,transaction) => {
             const date = new Date(transaction.date);
             const month = date.getMonth()+1;
             const year = date.getFullYear();
             const key = `${month}/${year}`;
+            //condition if current month not yet present
             if (!monthObj[key]) {
                 monthObj[key] = {
                     month: `${year}/${month}`,
@@ -42,6 +59,7 @@ function BarPlot() {
                     Expense: 0
                 };
             }
+            //condition for expense or income
             if (transaction.price >= 0) {
                 monthObj[key].Income += Math.round((transaction.price + Number.EPSILON) * 100) / 100;
                 
@@ -52,6 +70,7 @@ function BarPlot() {
             return monthObj;
         }, {});
 
+        //sort data by month and year
         let data = Object.values(monthGroups);
 
         data = data.sort((one,two) => {
@@ -64,9 +83,11 @@ function BarPlot() {
         return data;
     }
 
+    //instantiate data for bar chart
     const data = groupTransactions();
 
   return (
+    //bar chart instance
     <div className="plot">
         <h2>Transaction History</h2>
         <BarChart
@@ -79,6 +100,7 @@ function BarPlot() {
             left: 20,
             bottom: 5
         }}
+        //specifications of bar chart
         >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="month" />

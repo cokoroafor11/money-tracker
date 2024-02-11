@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiTrashCanOutline, mdiNoteEditOutline } from '@mdi/js';
 
 
-function Transaction() {
+function Transaction({userUID}) {
     const [name,setName] = useState('');
     const [date,setDate] = useState('');
     const [desc,setDesc] = useState('');

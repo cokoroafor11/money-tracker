@@ -2,7 +2,14 @@ import { useState, useEffect } from 'react'
 import '../styles/Budget.css'
 import Icon from '@mdi/react';
 import { mdiTrashCanOutline, mdiNoteEditOutline } from '@mdi/js';
-function Budget() {
+
+/**
+ * Function to generate and display user budgets
+ * @param {Object} param0 object containing userID from session
+ * @param {String} param0.userUID UserID passed from authentication with Firebase
+ * @returns {JSX.Element} Component displaying budget form and current user budgets
+ */
+function Budget({userUID}) {
 
     //Budget info
     const [budgetName,setBudgetName] = useState('');
@@ -62,13 +69,10 @@ function Budget() {
 
     return  (
         <div className="budget-body">
+            <h2>{userUID}</h2>
             <div className="left-body">
                 <div className = 'headers'>
                     <h1> Budgets</h1>
-                    {/* <div className="info">
-                        <h3>Existing Budgets</h3>
-                        <p>{budgets.length}</p>
-                    </div> */}
                     <div className="searchBar">
                     </div>
                 </div>
@@ -81,7 +85,6 @@ function Budget() {
                         <input type = "number" id = "budgetAmt" value={budgetGoal} onChange={e=> setbudgetGoal(e.target.value)} placeholder="$900" step="1" min="0" required/>
                     </div>
                     <div className="buttons">
-                        
                         <button type = "submit">Add Budget</button>
                     </div>
 
@@ -101,7 +104,7 @@ function Budget() {
                                 <p>${budget.budgetGoal} Budgeted</p>
                             </div>
                             <div className="progress-bar">
-                                <p>Progress Bar</p>
+                                {/* <p>Progress Bar</p> */}
                             </div>
                             <div className="budget-buttons">
                                 <button>Details</button>

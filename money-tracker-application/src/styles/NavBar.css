@@ -43,3 +43,10 @@
     padding: 10px 10px;
     transition: 0.4s;
   }
+  .logout {
+    color: white;
+  }
+  .logout button{
+    background-color: #2c3948;
+    color: white;
+  }

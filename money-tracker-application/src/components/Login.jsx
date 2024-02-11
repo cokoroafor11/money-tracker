@@ -3,12 +3,24 @@ import {NavLink, useNavigate} from 'react-router-dom';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../firebase';
 
+/**
+ * Login form that takes email and password and uses firebase
+ * authentication to generate an auth object and redirect user to dashboard
+ * @returns {JSX.Element} Form to log a user in
+ */
 function Login() {
+    //email, password and error variables
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [errorFlag,setErrorFlag] = useState('');
 
+    /**
+     * Function handling user login
+     * @param {*} e Event object for form submission
+     * @returns {Promise} Promise that resolves when there is a successful login,
+     * ultimately redirecting to the dashboard if successful
+     */
     async function login(e) {
         e.preventDefault();
         await signInWithEmailAndPassword(auth,email,password).then((userCredential) => {

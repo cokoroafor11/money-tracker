@@ -15,25 +15,35 @@ app.use(cors());
 //Convert JSON string to object for data manipulation on frontend
 app.use(express.json());
 
-//Emnabling port in express to start listening
+//Enabling port in express to start listening
 app.listen(port, () => {
     console.log(`Server is runnning on port ${port}`)
 });
 
 //Get transaction data
 app.get('/api/getTransactions', async (req,res)=> {
-    await mongoose.connect(process.env.MONGO_URL);
-    const transactionObject = await transaction.find()
-    res.json(transactionObject);
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        const transactionObject = await transaction.find()
+        res.json(transactionObject);
+    } catch (error) {
+        console.error("Error getting transaction:",error);
+    }
+
 });
 
 //Post transaction data
 app.post('/api/transaction', async (req,res) => {
-    await mongoose.connect(process.env.MONGO_URL);
-    const {name,desc,date,price,budgetType,budgetIdentifier} = req.body;
-    console.log('Received data:', req.body);
-    const transactionObject = await transaction.create({name,desc,date,price,budgetType,budgetIdentifier});
-    res.json(transactionObject);
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        const {name,desc,date,price,budgetType,budgetIdentifier} = req.body;
+        console.log('Received data:', req.body);
+        const transactionObject = await transaction.create({name,desc,date,price,budgetType,budgetIdentifier});
+        res.json(transactionObject);
+    } catch (error) {
+        console.error("Error posting transaction:",error);
+    }
+
 
 });
 
@@ -46,24 +56,34 @@ app.delete('/api/deleteTransactions/:id', async (req,res) => {
         res.json({success: true, message: `Transaction with ID ${transactionID} successfully removed.`})
     }
     catch(error) {
-        console.error("Error Deleting Transaction:",error);
+        console.error("Error deleting transaction:",error);
     }
     
 })
 
 //Get Budget Data
 app.get('/api/getBudgets', async (req,res)=> {
-    await mongoose.connect(process.env.MONGO_URL);
-    const budgetObject = await budget.find();
-    res.json(budgetObject);
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        const budgetObject = await budget.find();
+        res.json(budgetObject);
+    } catch (error) {
+        console.error("Error getting budget",error);
+    }
+
 });
 
 //Post Budget Data
 app.post('/api/budget', async (req,res)=> {
-    await mongoose.connect(process.env.MONGO_URL);
-    const {budgetName,budgetGoal} = req.body;
-    const budgetObject = await budget.create({budgetName,budgetGoal});
-    res.json(budgetObject);
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        const {budgetName,budgetGoal} = req.body;
+        const budgetObject = await budget.create({budgetName,budgetGoal});
+        res.json(budgetObject);
+    } catch (error) {
+        console.error("Error posting budget",error);
+    }
+
 })
 
 //Delete object data

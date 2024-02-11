@@ -1,7 +1,13 @@
 import AppRouter from './AppRouter';
 import {Link} from 'react-router-dom';
 import "../styles/Home.css"
-function Home({onLogin}) {
+
+/**
+ * Home page display
+ * @returns {JSX.Element} Home page with basic info and 
+ * links to login or sign up forms
+ */
+function Home() {
     return (
         <>
         <div className="home">
