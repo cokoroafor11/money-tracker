@@ -34,10 +34,12 @@ Once run, this will enable you to go to the localhost url provided and view the 
 ## Usage
 ### Login and Signup pages
 These pages prompt the user for credentials. Each page redirects to the other, so the user can log in if they've already created an account, or sign up if it's their first time. Data is stored in a firebase database.
-![](/photos/song-recommender-pic.PNG?raw=true)
+![](/images/song-recommender-pic.PNG?raw=true)
 
 ### Dashboard
 The dashboard page has a graph with your transaction history and transactions. This helps the user visualize their spending trends.
+![](/ImagesDashboard 1.PNG?raw=true)
+![](/ImagesDashboard 2.PNG?raw=true)
 
 
 ### Budgets
