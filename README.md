@@ -34,20 +34,21 @@ Once run, this will enable you to go to the localhost url provided and view the 
 ## Usage
 ### Login and Signup pages
 These pages prompt the user for credentials. Each page redirects to the other, so the user can log in if they've already created an account, or sign up if it's their first time. Data is stored in a firebase database.
-![](/images/song-recommender-pic.PNG?raw=true)
+![](/Images/LogIn.PNG?raw=true) ![](/Images/SignUp.PNG?raw=true)
 
 ### Dashboard
 The dashboard page has a graph with your transaction history and transactions. This helps the user visualize their spending trends.
-![](/ImagesDashboard 1.PNG?raw=true)
-![](/ImagesDashboard 2.PNG?raw=true)
+![](/Images/Dashboard1.PNG?raw=true)
+![](/Images/Dashboard2.PNG?raw=true)
 
 
 ### Budgets
 The budgets page provides a form for adding new budgets (name and amount) to your existing budgets. Existing budgets can be viewed on the right hand side of the page, along with details pertaining to that budget.
+![](/Images/Budgets.PNG?raw=true)
 
 ### Transactions
-
 The transactions page provides a form adding new transactions to your transaction history. Transaction information includes the name, date, description, price, and associated budget. Recent transactions can be viewed to the right of the page.
+![](/Images/Transactions.PNG?raw=true)
 
 ### NavBar
 
