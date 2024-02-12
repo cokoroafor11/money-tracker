@@ -2,10 +2,6 @@
 
 Budget Tracker is an application created to help users track income and expenses based on created budget categories. A dashboard helps you visualize newly added transactions.
 
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 ## Set Up
 
 You will need to create a [MongoDB](https://www.mongodb.com/) database for the backend. There are tutorials on how to set it up, but at least for testing you'll probably want to set the network access to ANY for your personal use. Or if you know your IP and won't be using a VPN or anything, you could do that too. Once set up, you'll need store the Mongo URL as MONGO_URL in a .env file in your api folder.
@@ -38,6 +34,7 @@ Once run, this will enable you to go to the localhost url provided and view the 
 ## Usage
 ### Login and Signup pages
 These pages prompt the user for credentials. Each page redirects to the other, so the user can log in if they've already created an account, or sign up if it's their first time. Data is stored in a firebase database.
+![](/photos/song-recommender-pic.PNG?raw=true)
 
 ### Dashboard
 The dashboard page has a graph with your transaction history and transactions. This helps the user visualize their spending trends.
