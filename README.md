@@ -61,7 +61,7 @@ The NavBar allows you to navigate to the aforementioned pages, with an additiona
 3. Express.js
 4. React.js
 
-#Future Work
+## Future Work
 I plan to add a completion bar to the budgets page to display the amount of money spent out of the whole budget.
 
 I plan to add sort and search functionalities for expenses so that you can search and sort based on the available categories.
