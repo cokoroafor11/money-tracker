@@ -29,7 +29,7 @@ function Dashboard({userUID}) {
         }));
         return parsedTransactions;
       }
-      
+
     //trigger the fetching of data when component is mounted
     useEffect(() => {
         getTransactions(currentPage).then(setTransactions)
@@ -119,7 +119,7 @@ function Dashboard({userUID}) {
                         return (
                         <tr key = {transaction._id}>
                             <td>{transaction.name}</td>
-                            <td>{transaction.price}</td>
+                            <td>${transaction.price}</td>
                             <td>{formattedDate}</td>
                             <td>{transaction.budgetType}</td>
                         </tr>
